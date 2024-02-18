@@ -126,8 +126,8 @@
                     <label for="transaction_type" class="block text-lg font-medium text-gray-600 mb-1">Transaction Type:</label>
                     <select id="transaction_type" name="transaction_type" required
                             class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300">
-                        <option value="deposit">Deposit</option>
-                        <option value="withdraw">Withdraw</option>
+                        <option value="deposit">Debit</option>
+                        <option value="withdraw">Credit</option>
                     </select>
                 </div>
                 <div>
@@ -163,7 +163,7 @@
                             <tr>
                                 <td>{{ transaction.date }}</td>
                                 <td>{{ transaction.type }}</td>
-                                <td class="{{ 'positive-amount' if transaction.type == "deposit" else 'negative-amount' }}">
+                                <td class="{{ 'positive-amount' if transaction.type == "debit" else 'negative-amount' }}">
                                     {{ transaction.amount }}
                                 </td>
                             </tr>
