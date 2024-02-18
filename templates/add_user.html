@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+
+    <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-4 text-center">Add User</h1>
+        <form method="post" action="{{ url_for('add_user') }}" class="space-y-4">
+            <div class="flex flex-col">
+                <label for="name" class="text-sm font-semibold text-gray-600 mb-1">Name:</label>
+                <input type="text" id="name" name="name" required
+                       class="px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300">
+            </div>
+            <div class="flex flex-col">
+                <label for="address" class="text-sm font-semibold text-gray-600 mb-1">Address:</label>
+                <input type="text" id="address" name="address" required
+                       class="px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300">
+            </div>
+            <div class="flex flex-col">
+                <label for="mobile" class="text-sm font-semibold text-gray-600 mb-1">Mobile:</label>
+                <input type="text" id="mobile" name="mobile" required
+                       class="px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300">
+            </div>
+
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Add User</button>
+        </form>
+    </div>
+
+</body>
+</html>
