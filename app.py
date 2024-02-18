@@ -79,18 +79,19 @@ def user_transactions(user_id):
         transaction_type = request.form['transaction_type']
         amount = float(request.form['amount'])
         date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        description=request.form['description']
 
         if transaction_type == 'deposit':
             user_collection.update_one(
                 {'_id': user_id},
                 {'$inc': {'balance': amount},
-                 '$push': {'transactions': {'type': 'deposit', 'amount': amount, 'date': date}}}
+                 '$push': {'transactions': {'type': 'deposit', 'amount': amount, 'date': date,'description':description}}}
             )
         elif transaction_type == 'withdraw':
             user_collection.update_one(
                     {'_id': user_id},
                     {'$inc': {'balance': -amount},
-                     '$push': {'transactions': {'type': 'withdraw', 'amount': amount, 'date': date}}}
+                     '$push': {'transactions': {'type': 'withdraw', 'amount': amount, 'date': date,'description':description}}}
                 )
         user = user_collection.find_one({'_id': user_id})
         transactions = user.get('transactions', [])[::-1]
