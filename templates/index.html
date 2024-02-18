@@ -64,7 +64,10 @@
         <button class="bg-blue-500 text-white px-4 py-2 w-full mb-8 rounded-md hover:bg-blue-600" onclick="location.href='/add_user'">
             Add User
         </button>
-        
+        <div class="bg-gray-100 p-4 rounded-md mb-4">
+            <p class="text-xl font-semibold text-gray-800">Total Balance:</p>
+            <p class="text-2xl font-bold text-green-500" id="totalBalance">{{total_balance}}</p>
+        </div>
 
             <ul id="userList">
                 <!-- Users will be dynamically added here -->

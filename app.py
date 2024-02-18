@@ -16,7 +16,8 @@ user_collection = db['users']  # Replace 'users' with the name of your user coll
 def index():
     # Fetch all users from the collection
     users = user_collection.find()
-    return render_template("index.html")
+    total_balance = sum(user['balance'] for user in users)
+    return render_template("index.html",total_balance=total_balance)
 
 @app.route('/add_user', methods=['GET', 'POST'])
 def add_user():
@@ -56,6 +57,7 @@ def search_users():
 
    
         # Convert MongoDB objects to a list of dictionaries
+    
     users_data = [
         {'_id': str(user['_id']), 'name': user['name'],'mobile':user['mobile'],'balance':user['balance']}
         for user in users
@@ -78,7 +80,7 @@ def user_transactions(user_id):
         # Get transaction details from the form
         transaction_type = request.form['transaction_type']
         amount = float(request.form['amount'])
-        date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        date = datetime.now().strftime('%Y-%m-%d')
         description=request.form['description']
 
         if transaction_type == 'debit':
