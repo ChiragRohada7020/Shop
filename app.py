@@ -83,13 +83,13 @@ def user_transactions(user_id):
         date = datetime.now().strftime('%Y-%m-%d')
         description=request.form['description']
 
-        if transaction_type == 'debit':
+        if transaction_type == 'credit':
             user_collection.update_one(
                 {'_id': user_id},
                 {'$inc': {'balance': amount},
                  '$push': {'transactions': {'type': 'debit', 'amount': amount, 'date': date,'description':description}}}
             )
-        elif transaction_type == 'credit':
+        elif transaction_type == 'debit':
             user_collection.update_one(
                     {'_id': user_id},
                     {'$inc': {'balance': -amount},

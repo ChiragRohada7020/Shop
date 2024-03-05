@@ -163,7 +163,7 @@
                             <tr>
                                 <td>{{ transaction.date }}</td>
                                 <td>{{ transaction.type }}</td>
-                                <td class="{{ 'positive-amount' if transaction.type == "debit" else 'negative-amount' }}">
+                                <td class="{{ 'positive-amount' if transaction.type == "credit" else 'negative-amount' }}">
                                     {{ transaction.amount }}
                                 </td>
                             </tr>
